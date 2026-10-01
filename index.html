@@ -1,0 +1,739 @@
+<title>Saifullah Saleh</title>
+<style>
+  /* Layout concept: a broadcast signal — concentric reach-arcs (from the
+     existing LinkedIn brand asset) mark section transitions; work is grouped
+     by capability (not by employer) so a reader filters by skill, not résumé. */
+  :root{
+    --bg:#F5F4EF; --surface:#FFFFFF; --surface-2:#ECEAE2;
+    --ink:#15162E; --muted:#4F4C72; --muted-2:#716D99;
+    --teal:#0B8F79; --coral:#D9542F; --violet:#5A4FC7;
+    --line:rgba(21,22,46,0.12); --line-strong:rgba(21,22,46,0.22);
+    --shadow:0 20px 50px rgba(21,22,46,0.10);
+    --font-display:'Poppins',system-ui,sans-serif;
+    --font-body:'Poppins',system-ui,sans-serif;
+    --font-mono:'Poppins',system-ui,sans-serif;
+    color-scheme: light;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1026; --surface:#171A38; --surface-2:#1D2044;
+    --ink:#F4F2EC; --muted:#A6A1C9; --muted-2:#7B77A6;
+    --teal:#2FE0C0; --coral:#FF8A66; --violet:#8A7FE0;
+    --line:rgba(244,242,236,0.12); --line-strong:rgba(244,242,236,0.22);
+    --shadow:0 20px 60px rgba(5,6,20,0.45);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:auto}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); line-height:1.6;
+    padding-inline:0; -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--teal); color:#08110F; }
+  a{ color:inherit; }
+  img{max-width:100%}
+  .wrap{ max-width:920px; margin-inline:auto; padding-inline:20px; }
+  h1,h2,h3{ font-family:var(--font-display); text-wrap:balance; margin:0; letter-spacing:-0.01em; }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:13.5px; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--teal); display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{ content:""; width:22px; height:1px; background:var(--teal); display:inline-block; }
+  .mono{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+  p{ margin:0; }
+  section{ padding-block:64px; border-bottom:1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
+    background:color-mix(in srgb, var(--bg) 86%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:14px; gap:16px;
+  }
+  .nav-name{ font-family:var(--font-display); font-weight:600; font-size:15px; letter-spacing:0.01em; }
+  .nav-links{ display:flex; align-items:center; gap:18px; font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em; }
+  .nav-links a{ text-decoration:none; color:var(--muted); white-space:nowrap; }
+  .nav-links a:hover{ color:var(--teal); }
+  .nav-scroll{ overflow-x:auto; }
+  .theme-btn{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em;
+    padding:5px 10px; border-radius:20px; border:1px solid var(--line-strong);
+    background:none; color:var(--muted); cursor:pointer; flex-shrink:0;
+  }
+  .theme-btn:hover{ border-color:var(--teal); color:var(--teal); }
+  @media (max-width:560px){
+    .nav-links a{ display:none; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ position:relative; padding-block:80px 56px; overflow:hidden; border-bottom:1px solid var(--line); }
+  .hero-arcs{ position:absolute; inset:0; pointer-events:none; opacity:0.5; }
+  .hero-inner{ position:relative; z-index:1; }
+  .hero .eyebrow{ margin-bottom:18px; }
+  .hero h1{ font-size:clamp(34px,6vw,58px); font-weight:700; line-height:1.04; }
+  .hero h1 .accent{ color:var(--teal); }
+  .hero-tag{
+    margin-top:18px; max-width:56ch; font-size:19px; color:var(--muted); font-family:var(--font-body);
+  }
+  .hero-cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .btn{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.03em;
+    padding:12px 20px; border-radius:3px; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--line-strong); transition:transform .15s ease, border-color .15s ease;
+  }
+  .btn:hover{ transform:translateY(-1px); border-color:var(--teal); }
+  .btn-solid{ background:var(--teal); color:#07130F; border-color:var(--teal); font-weight:600; }
+  .btn-solid:hover{ border-color:var(--teal); }
+
+  .stat-row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin-top:48px; background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden;
+  }
+  .stat{ background:var(--bg); padding:18px 16px; min-width:0; }
+  .stat .mono{ display:block; font-size:27px; color:var(--teal); font-weight:500; }
+  .stat .stat-label{
+    display:block; margin-top:4px; font-family:var(--font-mono); font-size:12.5px;
+    letter-spacing:0.08em; text-transform:uppercase; color:var(--muted-2);
+  }
+  @media (max-width:560px){ .stat-row{ grid-template-columns:1fr; } }
+
+  /* ---------- About ---------- */
+  .about-grid{ display:grid; grid-template-columns:140px 1fr; gap:40px; }
+  .about-grid p + p{ margin-top:16px; }
+  .about-copy{ font-size:17px; max-width:66ch; }
+  .about-copy strong{ color:var(--ink); font-weight:600; }
+  @media (max-width:640px){ .about-grid{ grid-template-columns:1fr; gap:16px; } }
+
+  /* ---------- Approach ---------- */
+  .approach-grid{ display:grid; grid-template-columns:140px 1fr; gap:40px; margin-top:0; }
+  .approach-steps{ margin-top:0; display:flex; flex-direction:column; }
+  .astep{ display:grid; grid-template-columns:34px 1fr; gap:16px; padding-block:18px; border-top:1px solid var(--line); }
+  .astep:first-child{ border-top:1px solid var(--line-strong); }
+  .astep-n{ font-family:var(--font-mono); font-size:13px; color:var(--coral); padding-top:2px; }
+  .astep-h{ font-family:var(--font-display); font-weight:600; font-size:16.5px; }
+  .astep-d{ margin-top:5px; color:var(--muted); font-size:16px; max-width:60ch; }
+  @media (max-width:640px){ .approach-grid{ grid-template-columns:1fr; gap:16px; } }
+
+  /* ---------- Experience ---------- */
+  .timeline{ margin-top:36px; display:flex; flex-direction:column; }
+  .role{
+    display:grid; grid-template-columns:150px 1fr; gap:24px;
+    padding-block:28px; border-top:1px solid var(--line);
+  }
+  .role:first-child{ border-top:1px solid var(--line-strong); }
+  .role-when{ font-family:var(--font-mono); font-size:12px; color:var(--muted-2); letter-spacing:0.03em; padding-top:3px; }
+  .role-when .current{ color:var(--teal); }
+  .role-title{ font-family:var(--font-display); font-size:20px; font-weight:600; }
+  .role-org{ font-family:var(--font-mono); font-size:13.5px; color:var(--muted); margin-top:3px; letter-spacing:0.02em; }
+  .role-desc{ margin-top:10px; color:var(--muted); font-size:16.5px; max-width:62ch; }
+  @media (max-width:640px){
+    .role{ grid-template-columns:1fr; gap:6px; }
+  }
+
+  /* ---------- Work / capability sections ---------- */
+  .work-sub{ margin-top:52px; }
+  .work-sub:first-child{ margin-top:36px; }
+  .work-sub-head{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
+  .work-sub-num{ font-family:var(--font-mono); font-size:13px; color:var(--coral); letter-spacing:0.05em; }
+  .work-sub-title{ font-family:var(--font-display); font-weight:600; font-size:18.5px; }
+  .cases{ margin-top:18px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .cases.single{ grid-template-columns:1fr; }
+  .case{
+    background:var(--surface); border:1px solid var(--line); border-radius:6px;
+    padding:26px; display:flex; flex-direction:column; gap:12px; min-width:0;
+  }
+  .case-result{ font-family:var(--font-display); font-size:29px; font-weight:700; color:var(--teal); line-height:1; }
+  .case-what{ font-family:var(--font-display); font-size:16.5px; font-weight:600; }
+  .case-org{ font-family:var(--font-mono); font-size:12.5px; color:var(--muted-2); letter-spacing:0.05em; text-transform:uppercase; }
+  .case-desc{ color:var(--muted); font-size:16px; }
+  .case-note{
+    margin-top:2px; font-family:var(--font-mono); font-size:12px; color:var(--violet);
+    letter-spacing:0.02em; font-style:normal;
+  }
+  @media (max-width:640px){ .cases{ grid-template-columns:1fr; } }
+
+  /* ---------- YouTube first-28-days stat callout ---------- */
+  .yt-stats{
+    margin-top:18px; border:1px solid var(--line); border-radius:6px;
+    background:var(--surface-2); padding:18px 20px;
+  }
+  .yt-stats-label{
+    font-family:var(--font-mono); font-size:11.5px; color:var(--muted-2);
+    text-transform:uppercase; letter-spacing:0.07em; margin-bottom:12px;
+  }
+  .yt-stats-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:16px;
+  }
+  .yt-stat-figure{
+    font-family:var(--font-display); font-size:22px; font-weight:700; color:var(--teal); line-height:1.2;
+  }
+  .yt-stat-raw{
+    font-family:var(--font-mono); font-size:12px; color:var(--muted); margin-top:3px;
+  }
+  .yt-stat-name{
+    font-family:var(--font-mono); font-size:11px; color:var(--muted-2);
+    text-transform:uppercase; letter-spacing:0.05em; margin-top:6px;
+  }
+  .yt-stats-note{
+    margin-top:14px; font-size:13px; color:var(--muted); line-height:1.5;
+  }
+  @media (max-width:640px){ .yt-stats-grid{ grid-template-columns:1fr; } }
+  .yt-shots{
+    margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:8px;
+  }
+  .yt-shots button{
+    all:unset; display:block; cursor:zoom-in; border-radius:5px; overflow:hidden;
+    border:1px solid var(--line); line-height:0;
+  }
+  .yt-shots button:hover{ border-color:var(--teal); }
+  .yt-shots img{ display:block; width:100%; height:auto; }
+  @media (max-width:640px){ .yt-shots{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---------- Work samples gallery ---------- */
+  .gallery-label{
+    margin-top:18px; margin-bottom:8px; font-family:var(--font-mono); font-size:11.5px;
+    color:var(--muted-2); text-transform:uppercase; letter-spacing:0.07em;
+  }
+  .work-gallery{ display:grid; grid-template-columns:repeat(auto-fill,minmax(108px,1fr)); gap:8px; }
+  .gallery-sublabel{
+    margin-top:14px; margin-bottom:6px; font-family:var(--font-mono); font-size:10.5px;
+    color:var(--muted-2); letter-spacing:0.05em;
+  }
+  .gallery-sublabel:first-of-type{ margin-top:4px; }
+  .work-gallery button{
+    all:unset; display:block; cursor:zoom-in; border-radius:5px; overflow:hidden;
+    border:1px solid var(--line); line-height:0;
+  }
+  .work-gallery button:hover{ border-color:var(--teal); }
+  .work-gallery img{
+    display:block; width:100%; aspect-ratio:3/4; object-fit:cover;
+    transition:transform .2s ease;
+  }
+  .work-gallery button:hover img{ transform:scale(1.06); }
+  #lightbox{
+    display:none; position:fixed; inset:0; z-index:50; background:rgba(5,6,20,0.88);
+    align-items:center; justify-content:center; padding:28px; cursor:zoom-out;
+  }
+  #lightbox img{ max-width:min(640px,92vw); max-height:88vh; border-radius:6px; box-shadow:var(--shadow); }
+  #lightbox .lightbox-close{
+    position:absolute; top:18px; right:22px; font-family:var(--font-mono); font-size:13px;
+    color:var(--ink); background:none; border:1px solid var(--line-strong); border-radius:20px;
+    padding:6px 14px; cursor:pointer;
+  }
+
+  /* ---------- Client roster (redacted) ---------- */
+  .client-grid{ margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  .client-chip{
+    background:var(--surface); border:1px solid var(--line); border-radius:6px;
+    padding:14px 16px; min-width:0;
+  }
+  .client-redacted{ font-family:var(--font-mono); font-size:16px; letter-spacing:0.04em; color:var(--ink); }
+  .client-niche{ margin-top:4px; font-size:13.5px; color:var(--muted); }
+  .client-footnote{ margin-top:14px; font-family:var(--font-mono); font-size:12.5px; color:var(--muted-2); }
+  @media (max-width:760px){ .client-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:480px){ .client-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Skills ---------- */
+  .skill-groups{ margin-top:32px; display:grid; grid-template-columns:1fr 1fr; gap:28px 40px; }
+  .skill-group h3{ font-family:var(--font-mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:var(--violet); font-weight:600; }
+  .chip-row{ margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{
+    font-family:var(--font-mono); font-size:13.5px; padding:6px 12px; border-radius:20px;
+    border:1px solid var(--line-strong); color:var(--muted);
+  }
+  @media (max-width:640px){ .skill-groups{ grid-template-columns:1fr; } }
+
+  /* ---------- Education ---------- */
+  .edu-row{ display:grid; grid-template-columns:150px 1fr; gap:24px; padding-block:18px; border-top:1px solid var(--line); }
+  .edu-row:first-child{ border-top:1px solid var(--line-strong); }
+  .edu-when{ font-family:var(--font-mono); font-size:13px; color:var(--muted-2); padding-top:3px; }
+  .edu-deg{ font-family:var(--font-display); font-weight:600; font-size:17px; }
+  .edu-org{ font-family:var(--font-mono); font-size:13.5px; color:var(--muted); margin-top:3px; }
+  @media (max-width:640px){ .edu-row{ grid-template-columns:1fr; gap:4px; } }
+
+  /* ---------- Contact / footer ---------- */
+  .contact{ text-align:left; }
+  .contact h2{ font-size:clamp(26px,4.4vw,38px); max-width:20ch; }
+  .contact-copy{ margin-top:14px; color:var(--muted); max-width:52ch; font-size:16px; }
+  .contact-lines{ margin-top:30px; display:flex; flex-direction:column; gap:10px; }
+  .contact-line{
+    display:flex; align-items:center; gap:12px; font-family:var(--font-mono); font-size:15.5px;
+    flex-wrap:wrap;
+  }
+  .contact-line .k{ color:var(--muted-2); width:76px; flex-shrink:0; text-transform:uppercase; font-size:12px; letter-spacing:0.08em; }
+  .contact-line .v{ color:var(--ink); word-break:break-word; }
+  .copy-btn{
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em; padding:4px 10px;
+    border:1px solid var(--line-strong); border-radius:20px; background:none; color:var(--muted); cursor:pointer;
+  }
+  .copy-btn:hover{ border-color:var(--teal); color:var(--teal); }
+  footer{ padding-block:32px; }
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+    font-family:var(--font-mono); font-size:12.5px; color:var(--muted-2);
+  }
+
+  @media (prefers-reduced-motion:no-preference){
+    .role, .case{ transition:transform .15s ease; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<header class="nav">
+  <div class="wrap nav-row">
+    <div class="nav-name">SAIFULLAH SALEH</div>
+    <nav class="nav-links nav-scroll">
+      <a href="#work">Work</a>
+      <a href="#approach">Approach</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()" type="button">Dark mode</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <svg class="hero-arcs" viewBox="0 0 920 420" preserveAspectRatio="xMaxYMid slice" aria-hidden="true">
+      <g fill="none" stroke-linecap="round">
+        <circle cx="960" cy="210" r="140" style="stroke:var(--teal)" stroke-opacity="0.45" stroke-width="1.4"/>
+        <circle cx="960" cy="210" r="220" style="stroke:var(--coral)" stroke-opacity="0.32" stroke-width="1.2"/>
+        <circle cx="960" cy="210" r="300" style="stroke:var(--teal)" stroke-opacity="0.22" stroke-width="1.2"/>
+        <circle cx="960" cy="210" r="380" style="stroke:var(--violet)" stroke-opacity="0.16" stroke-width="1"/>
+      </g>
+      <g>
+        <circle cx="760" cy="90" r="3" style="fill:var(--teal)"/>
+        <circle cx="820" cy="300" r="2.4" style="fill:var(--coral)"/>
+        <circle cx="700" cy="330" r="2" style="fill:var(--violet)"/>
+      </g>
+    </svg>
+    <div class="wrap hero-inner">
+      <div class="eyebrow">DIGITAL MARKETING &amp; SOCIAL MEDIA</div>
+      <h1>Saifullah Saleh<br>builds <span class="accent">marketing systems</span><br>that outlast the campaign.</h1>
+      <p class="hero-tag">Social Media Manager and Digital Marketing Strategist based in Islamabad, Pakistan — six years running paid, organic, and content strategy for teams and clients across the USA, UK, Canada, and the Middle East.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="https://www.linkedin.com/in/saifullah-saleh-860001310/">View LinkedIn ↗</a>
+        <a class="btn" href="#contact">Get in touch</a>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><span class="mono">6+</span><span class="stat-label">Years in market</span></div>
+        <div class="stat"><span class="mono">15</span><span class="stat-label">Largest team led</span></div>
+        <div class="stat"><span class="mono">12+</span><span class="stat-label">Industries served</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="eyebrow">ABOUT</div>
+      <div class="about-copy">
+        <p>I help businesses turn social media and digital marketing into <strong>measurable outcomes</strong> — audience growth, qualified leads, and revenue — not just content for its own sake. My work spans social strategy, Meta and Google Ads, content planning, and campaign analytics, usually while leading the team that ships it.</p>
+        <p>I've run organic programs on zero marketing budget, paid performance campaigns across international travel and real estate clients, and multi-account teams of up to 15 people spanning the USA, UK, Canada, and the Middle East. Before marketing, I trained at the Pakistan Military Academy — the discipline and structure from that still shape how I run a campaign.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="approach">
+    <div class="wrap approach-grid">
+      <div class="eyebrow">APPROACH</div>
+      <div>
+        <p class="about-copy" style="margin-bottom:8px;">Every campaign starts the same way, regardless of industry:</p>
+        <div class="approach-steps">
+          <div class="astep">
+            <div class="astep-n">01</div>
+            <div>
+              <div class="astep-h">Know the market before touching the message</div>
+              <div class="astep-d">What are the customer's actual pain points, what does the business offer, and why should anyone trust it over the alternative — answered before any creative is built.</div>
+            </div>
+          </div>
+          <div class="astep">
+            <div class="astep-n">02</div>
+            <div>
+              <div class="astep-h">Build the message around one hook</div>
+              <div class="astep-d">A clear tagline and a single emotional trigger — usually urgency or FOMO — tied directly to the pain point just identified, not a generic brand line.</div>
+            </div>
+          </div>
+          <div class="astep">
+            <div class="astep-n">03</div>
+            <div>
+              <div class="astep-h">Match the content mode to the job it has to do</div>
+              <div class="astep-d">Graphics keep a platform active and feeding the algorithm day to day — they're maintenance, not the growth driver. Video, especially 9:16 vertical, is what actually moves leads and sales.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="eyebrow">SELECTED WORK</div>
+      <h2 style="margin-top:14px; font-size:clamp(24px,4vw,32px);">Organized by what I do, not who I did it for.</h2>
+
+      <div class="work-sub">
+        <div class="work-sub-head">
+          <span class="work-sub-num">01</span>
+          <span class="work-sub-title">Organic Growth &amp; Content Strategy</span>
+        </div>
+        <div class="cases single">
+          <div class="case">
+            <div class="case-result">$0 paid budget</div>
+            <div class="case-what">Video-first organic program across six platforms</div>
+            <div class="case-org">Canadian-based CPA firm — current engagement, name withheld</div>
+            <p class="case-desc">Designed and run the full content pipeline — topics, filming cadence, editing, graphics, and scheduling — cascading one weekly long-form video into shorts and posts across YouTube, Instagram, TikTok, Facebook, X, and LinkedIn with no paid spend.</p>
+
+            <div class="yt-stats">
+              <div class="yt-stats-label">YouTube — first 28 days vs. the month prior</div>
+              <div class="yt-stats-grid">
+                <div>
+                  <div class="yt-stat-figure">+136%</div>
+                  <div class="yt-stat-raw">7.5 → 13.8 hrs</div>
+                  <div class="yt-stat-name">Watch time</div>
+                </div>
+                <div>
+                  <div class="yt-stat-figure">Doubled</div>
+                  <div class="yt-stat-raw">+3 → +4 new subs</div>
+                  <div class="yt-stat-name">Subscriber growth</div>
+                </div>
+                <div>
+                  <div class="yt-stat-figure">+57%</div>
+                  <div class="yt-stat-raw">911 → 1,434 views</div>
+                  <div class="yt-stat-name">Views</div>
+                </div>
+              </div>
+              <p class="yt-stats-note">Sep 3–30 (first full cycle after taking over organic content) compared to Aug 1–31 (prior baseline). Channel was early-stage going in, so absolute numbers are shown alongside the percentages.</p>
+              <div class="yt-shots">
+                <button onclick="openLightbox('assets/yt-aug-overview.png')"><img src="assets/yt-aug-overview.png" loading="lazy" alt="YouTube overview, August baseline"></button>
+                <button onclick="openLightbox('assets/yt-sep-overview.png')"><img src="assets/yt-sep-overview.png" loading="lazy" alt="YouTube overview, first 28 days"></button>
+                <button onclick="openLightbox('assets/yt-sep-videos.png')"><img src="assets/yt-sep-videos.png" loading="lazy" alt="YouTube long-form video analytics, first 28 days"></button>
+                <button onclick="openLightbox('assets/yt-sep-shorts.png')"><img src="assets/yt-sep-shorts.png" loading="lazy" alt="YouTube Shorts analytics, first 28 days"></button>
+              </div>
+            </div>
+
+            <div class="gallery-label">Educational carousels &amp; graphics (15)</div>
+
+            <div class="gallery-sublabel">Light theme</div>
+            <div class="work-gallery">
+              <button onclick="openLightbox('assets/dd664893.jpg')"><img src="assets/dd664893.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/08ae36eb.jpg')"><img src="assets/08ae36eb.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/859945f3.jpg')"><img src="assets/859945f3.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/2e0675f5.jpg')"><img src="assets/2e0675f5.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/8edf458f.jpg')"><img src="assets/8edf458f.jpg" loading="lazy" alt="Organic content sample"></button>
+            </div>
+
+            <div class="gallery-sublabel">Dark theme</div>
+            <div class="work-gallery">
+              <button onclick="openLightbox('assets/a0e240b8.jpg')"><img src="assets/a0e240b8.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/b2837718.jpg')"><img src="assets/b2837718.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/9ae53b4e.jpg')"><img src="assets/9ae53b4e.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/cb27c040.jpg')"><img src="assets/cb27c040.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/d495df69.jpg')"><img src="assets/d495df69.jpg" loading="lazy" alt="Organic content sample"></button>
+            </div>
+
+            <div class="gallery-sublabel">Red accent</div>
+            <div class="work-gallery">
+              <button onclick="openLightbox('assets/8c99cddb.jpg')"><img src="assets/8c99cddb.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/2e35d21e.jpg')"><img src="assets/2e35d21e.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/4b7692d2.jpg')"><img src="assets/4b7692d2.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/b7d57776.jpg')"><img src="assets/b7d57776.jpg" loading="lazy" alt="Organic content sample"></button>
+              <button onclick="openLightbox('assets/6520bdcc.jpg')"><img src="assets/6520bdcc.jpg" loading="lazy" alt="Organic content sample"></button>
+            </div>
+
+            <div class="gallery-label">Short-form video thumbnails (6)</div>
+            <div class="work-gallery">
+              <button onclick="openLightbox('assets/f0a2133b.jpg')"><img src="assets/f0a2133b.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
+              <button onclick="openLightbox('assets/fe6daeb9.jpg')"><img src="assets/fe6daeb9.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
+              <button onclick="openLightbox('assets/dc1f4cb6.jpg')"><img src="assets/dc1f4cb6.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
+              <button onclick="openLightbox('assets/593c72bd.jpg')"><img src="assets/593c72bd.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
+              <button onclick="openLightbox('assets/b2249e65.jpg')"><img src="assets/b2249e65.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
+              <button onclick="openLightbox('assets/42bb4343.jpg')"><img src="assets/42bb4343.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
+            </div>
+
+            <div class="gallery-label">Long-form video thumbnails (3)</div>
+            <div class="work-gallery">
+              <button onclick="openLightbox('assets/a58a1a85.jpg')"><img src="assets/a58a1a85.jpg" loading="lazy" alt="Long-form video thumbnail sample"></button>
+              <button onclick="openLightbox('assets/1ab71f2a.jpg')"><img src="assets/1ab71f2a.jpg" loading="lazy" alt="Long-form video thumbnail sample"></button>
+              <button onclick="openLightbox('assets/5fd84b51.jpg')"><img src="assets/5fd84b51.jpg" loading="lazy" alt="Long-form video thumbnail sample"></button>
+            </div>
+            <div class="case-note">Client name and logos withheld per current-engagement confidentiality; faces of other on-camera team members blurred.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-sub">
+        <div class="work-sub-head">
+          <span class="work-sub-num">02</span>
+          <span class="work-sub-title">Paid Media &amp; Performance Campaigns</span>
+        </div>
+        <div class="cases">
+          <div class="case">
+            <div class="case-result">SAR 2.5M / 3 mo</div>
+            <div class="case-what">Two customized video-mode lead campaigns</div>
+            <div class="case-org">International travel &amp; accommodation company</div>
+            <p class="case-desc">Designed and ran two tailored video-based lead-generation campaigns, generating consistently high-quality leads; best single week drove SAR 300,000 in client revenue.</p>
+          </div>
+          <div class="case">
+            <div class="case-result">PKR 400M / 6 mo</div>
+            <div class="case-what">Video-based campaigns across multiple projects</div>
+            <div class="case-org">Real estate company — multiple projects</div>
+            <p class="case-desc">Maintained consistent, quality organic posting and ran video-led campaigns across several concurrent real estate projects, supporting PKR 400 million in property sales over six months.</p>
+          </div>
+          <div class="case">
+            <div class="case-result">Up to 15 people</div>
+            <div class="case-what">Meta Ads &amp; multi-account campaign management</div>
+            <div class="case-org">StakeVille — international client accounts</div>
+            <p class="case-desc">Lead paid media and campaign execution across a cross-functional team serving clients in the USA, UK, and Canada, from audience segmentation through reporting.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-sub">
+        <div class="work-sub-head">
+          <span class="work-sub-num">03</span>
+          <span class="work-sub-title">Creative &amp; Video Production</span>
+        </div>
+        <div class="cases single">
+          <div class="case">
+            <div class="case-result">9:16 vertical</div>
+            <div class="case-what">Graphics as algorithm maintenance, video as the growth lever</div>
+            <div class="case-org">International travel &amp; accommodation company</div>
+            <p class="case-desc">Directed ad creative briefs and platform graphics that kept channels active between campaigns, while vertical video carried the actual lead and conversion volume.</p>
+            <div class="case-note">Sample graphics &amp; creative briefs available on request</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-sub">
+        <div class="work-sub-head">
+          <span class="work-sub-num">04</span>
+          <span class="work-sub-title">Client &amp; Campaign Management — Multi-Industry</span>
+        </div>
+        <p class="case-desc" style="margin-top:14px; max-width:68ch;">Twelve concurrent client accounts managed through StakeVille, spanning twelve different industries. Names are redacted under agency confidentiality; detailed case studies are being added as each one clears review.</p>
+        <div class="client-grid">
+          <div class="client-chip"><div class="client-redacted">A•••••h</div><div class="client-niche">Insurance — Canada</div></div>
+          <div class="client-chip"><div class="client-redacted">D•••••a</div><div class="client-niche">Yoga</div></div>
+          <div class="client-chip"><div class="client-redacted">M•••••r</div><div class="client-niche">E-Commerce — home care</div></div>
+          <div class="client-chip"><div class="client-redacted">S•••••s</div><div class="client-niche">Health Insurance — US</div></div>
+          <div class="client-chip"><div class="client-redacted">G•••••h</div><div class="client-niche">Restaurant (Japanese) — UK</div></div>
+          <div class="client-chip"><div class="client-redacted">E•••••g</div><div class="client-niche">E-Commerce / Trading</div></div>
+          <div class="client-chip"><div class="client-redacted">V•••••a</div><div class="client-niche">Marketing — Canadian cleaning industry</div></div>
+          <div class="client-chip"><div class="client-redacted">T•••••K</div><div class="client-niche">Kids &amp; Apparel — US</div></div>
+          <div class="client-chip"><div class="client-redacted">N•••••h</div><div class="client-niche">Health &amp; Fitness Coaching — US</div></div>
+          <div class="client-chip"><div class="client-redacted">I•••••s</div><div class="client-niche">Nutrition Coaching</div></div>
+          <div class="client-chip"><div class="client-redacted">C•••••y</div><div class="client-niche">Automobile Marketplace — Saudi Arabia</div></div>
+          <div class="client-chip"><div class="client-redacted">HR Co.</div><div class="client-niche">Acquisition &amp; Lead Generation</div></div>
+        </div>
+        <div class="client-footnote">NDA available on request for engagements requiring verification.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <div class="eyebrow">EXPERIENCE</div>
+      <div class="timeline">
+        <div class="role">
+          <div class="role-when">Apr 2022 — <span class="current">Present</span></div>
+          <div>
+            <div class="role-title">Manager, Digital Marketing &amp; Client Success</div>
+            <div class="role-org">STAKEVILLE</div>
+            <p class="role-desc">Lead digital marketing, social media, and client success for international accounts across the USA, UK, and Canada, coordinating a cross-functional team of up to 15 across paid media, content, and campaign operations.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-when">Aug 2025 — Jul 2026</div>
+          <div>
+            <div class="role-title">Digital Marketing Team Lead — Growth &amp; Lead Generation</div>
+            <div class="role-org">FUNADIQ / UMRAH COMPANIONS</div>
+            <p class="role-desc">Directed audience-growth and lead-generation campaigns across the USA, Canada, UK, and Middle East, using audience segmentation to sharpen messaging, targeting, and creative performance.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-when">Apr 2024 — Aug 2025</div>
+          <div>
+            <div class="role-title">Digital Marketing Team Lead — Performance Campaigns</div>
+            <div class="role-org">DIGI MARKETING INC</div>
+            <p class="role-desc">Managed end-to-end Meta and Google Ads campaigns for international B2B/B2C accounts; A/B testing and audience segmentation work contributed to an approximate 30% reduction in CPA while holding lead quality. Directed a cross-functional team of 10+ designers, copywriters, and media buyers.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-when">Apr 2021 — Mar 2024</div>
+          <div>
+            <div class="role-title">Manager, Digital Marketing</div>
+            <div class="role-org">AWAZ MARKETING</div>
+            <p class="role-desc">Built the organization's YouTube ecosystem and managed content and engagement across YouTube, Facebook, and Instagram; led real estate video production end to end, including on-camera presenting, while holding a 98% positive community-sentiment score.</p>
+          </div>
+        </div>
+        <div class="role">
+          <div class="role-when">Jun 2020 — Apr 2021</div>
+          <div>
+            <div class="role-title">Marketing Executive | Content &amp; Copywriter</div>
+            <div class="role-org">NXG IMPACTS</div>
+            <p class="role-desc">Produced SEO-oriented website copy, ad scripts, and marketing content across technology, consumer products, agriculture, and health-related product lines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="wrap">
+      <div class="eyebrow">SKILLS</div>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Strategy &amp; Growth</h3>
+          <div class="chip-row">
+            <span class="chip">Social Media Strategy</span>
+            <span class="chip">Digital Marketing Strategy</span>
+            <span class="chip">Performance Marketing</span>
+            <span class="chip">Audience Growth &amp; Brand Awareness</span>
+            <span class="chip">Lead Generation &amp; Funnel Strategy</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Execution</h3>
+          <div class="chip-row">
+            <span class="chip">Meta Ads Manager</span>
+            <span class="chip">Google Ads</span>
+            <span class="chip">Content Calendars &amp; Scheduling</span>
+            <span class="chip">Campaign Optimization &amp; A/B Testing</span>
+            <span class="chip">Social Media Analytics &amp; Reporting</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Leadership</h3>
+          <div class="chip-row">
+            <span class="chip">Team Leadership &amp; Project Coordination</span>
+            <span class="chip">Cross-Functional Coordination</span>
+            <span class="chip">Client Relationship Management</span>
+            <span class="chip">Community Management &amp; Engagement</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <div class="chip-row">
+            <span class="chip">Google Analytics</span>
+            <span class="chip">HubSpot CRM</span>
+            <span class="chip">Canva</span>
+            <span class="chip">Adobe Photoshop</span>
+            <span class="chip">Filmora</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <div class="eyebrow">EDUCATION</div>
+      <div style="margin-top:20px;">
+        <div class="edu-row">
+          <div class="edu-when">2021 — 2023</div>
+          <div>
+            <div class="edu-deg">Master's, International Relations</div>
+            <div class="edu-org">University of Sargodha</div>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-when">2017 — 2019</div>
+          <div>
+            <div class="edu-deg">Bachelor's, International Relations &amp; Political Science</div>
+            <div class="edu-org">University of Sargodha</div>
+          </div>
+        </div>
+        <div class="edu-row">
+          <div class="edu-when">Apr 2015 — Apr 2017</div>
+          <div>
+            <div class="edu-deg">Bachelor of Military Arts &amp; Sciences</div>
+            <div class="edu-org">Pakistan Military Academy, Kakul — Abbottabad</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div class="eyebrow">CONTACT</div>
+      <h2 style="margin-top:14px;">Open to Social Media Manager and Digital Marketing roles — remote, international teams preferred.</h2>
+      <p class="contact-copy">The fastest way to reach me is email or LinkedIn. Happy to walk through any of the results above in more detail.</p>
+      <div class="contact-lines">
+        <div class="contact-line"><span class="k">Email</span><span class="v" id="email-val">saif30260@gmail.com</span><button class="copy-btn" data-copy="saif30260@gmail.com" onclick="copyVal(this)">Copy</button></div>
+        <div class="contact-line"><span class="k">Phone</span><span class="v">+92 320 507 5371</span><button class="copy-btn" data-copy="+923205075371" onclick="copyVal(this)">Copy</button></div>
+        <div class="contact-line"><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/saifullah-saleh-860001310/" style="text-decoration:underline; text-decoration-color:var(--line-strong);">linkedin.com/in/saifullah-saleh-860001310</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <span>SAIFULLAH SALEH — ISLAMABAD, PAKISTAN</span>
+    <span>UPDATED OCT 2026</span>
+  </div>
+</footer>
+
+<div id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" type="button" onclick="closeLightbox(event)">Close ✕</button>
+  <img id="lightbox-img" src="" alt="Enlarged work sample">
+</div>
+
+<script>
+  function openLightbox(src){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+  function closeLightbox(e){
+    if(e) e.stopPropagation();
+    document.getElementById('lightbox').style.display = 'none';
+  }
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape') closeLightbox();
+  });
+
+  function copyVal(btn){
+    var text = btn.getAttribute('data-copy');
+    var original = btn.textContent;
+    function done(ok){
+      btn.textContent = ok ? 'Copied' : 'Select text';
+      setTimeout(function(){ btn.textContent = original; }, 1400);
+    }
+    try{
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+    }catch(e){ done(false); }
+  }
+
+  function applyThemeLabel(){
+    var btn = document.getElementById('theme-toggle');
+    if(!btn) return;
+    var current = document.documentElement.getAttribute('data-theme');
+    btn.textContent = (current === 'dark') ? 'Light mode' : 'Dark mode';
+  }
+
+  function toggleTheme(){
+    var root = document.documentElement;
+    var current = root.getAttribute('data-theme');
+    var next = (current === 'dark') ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    applyThemeLabel();
+  }
+
+  (function initTheme(){
+    try{
+      // Clear any theme ever saved by an earlier version of this page, so
+      // light is always the starting point for every viewer, every visit.
+      localStorage.removeItem('ss-theme');
+    }catch(e){}
+    applyThemeLabel();
+  })();
+</script>
