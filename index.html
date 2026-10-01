@@ -296,6 +296,42 @@
   @media (prefers-reduced-motion:no-preference){
     .role, .case{ transition:transform .15s ease; }
   }
+
+  /* ---------- Mobile readability boost ----------
+     Same layout, same design — just a bit more size and breathing
+     room on small screens so nothing feels cramped at fit-to-page zoom. */
+  @media (max-width:640px){
+    body{ line-height:1.68; }
+    .hero-tag{ font-size:17.5px; line-height:1.55; }
+    .about-copy{ font-size:17px; line-height:1.6; }
+    .astep-h{ font-size:17.5px; }
+    .astep-d{ font-size:16.5px; line-height:1.6; }
+    .role-title{ font-size:19px; }
+    .role-org{ font-size:14.5px; }
+    .role-desc{ font-size:16.5px; line-height:1.6; }
+    .work-sub-title{ font-size:19px; }
+    .case-result{ font-size:27px; }
+    .case-what{ font-size:17px; }
+    .case-org{ font-size:13px; }
+    .case-desc{ font-size:16.5px; line-height:1.6; }
+    .client-redacted{ font-size:16.5px; }
+    .client-niche{ font-size:14px; }
+    .client-category-head{ font-size:12.5px; }
+    .client-category-dot{ width:9px; height:9px; }
+    .yt-stat-figure{ font-size:23px; }
+    .yt-stat-raw{ font-size:12.5px; }
+    .yt-stat-name{ font-size:11.5px; }
+    .edu-deg{ font-size:18px; }
+    .edu-org{ font-size:14px; }
+    .contact-copy{ font-size:16.5px; line-height:1.6; }
+    .contact-line{ font-size:16px; }
+    .stat .mono{ font-size:29px; }
+    .stat .stat-label{ font-size:13px; }
+    .eyebrow{ font-size:14px; }
+    .theme-btn{ padding:7px 13px; font-size:12.5px; }
+    .copy-btn{ padding:6px 12px; font-size:13px; }
+    .client-chip{ padding:15px 17px; }
+  }
 </style>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
