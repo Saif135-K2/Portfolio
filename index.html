@@ -228,14 +228,28 @@
   }
 
   /* ---------- Client roster (redacted) ---------- */
-  .client-grid{ margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  .client-grid{ margin-top:10px; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
   .client-chip{
-    background:var(--surface); border:1px solid var(--line); border-radius:6px;
-    padding:14px 16px; min-width:0;
+    background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--line);
+    border-radius:6px; padding:14px 16px; min-width:0;
   }
+  .client-chip.cc-teal{ border-left-color:var(--teal); }
+  .client-chip.cc-coral{ border-left-color:var(--coral); }
+  .client-chip.cc-violet{ border-left-color:var(--violet); }
   .client-redacted{ font-family:var(--font-mono); font-size:16px; letter-spacing:0.04em; color:var(--ink); }
   .client-niche{ margin-top:4px; font-size:13.5px; color:var(--muted); }
   .client-footnote{ margin-top:14px; font-family:var(--font-mono); font-size:12.5px; color:var(--muted-2); }
+  .client-category{ margin-top:22px; }
+  .client-category:first-of-type{ margin-top:18px; }
+  .client-category-head{
+    display:flex; align-items:center; gap:8px; margin-bottom:10px;
+    font-family:var(--font-mono); font-size:12px; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--muted-2);
+  }
+  .client-category-dot{ width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+  .client-category-dot.cc-teal{ background:var(--teal); }
+  .client-category-dot.cc-coral{ background:var(--coral); }
+  .client-category-dot.cc-violet{ background:var(--violet); }
   @media (max-width:760px){ .client-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:480px){ .client-grid{ grid-template-columns:1fr; } }
 
@@ -383,6 +397,46 @@
       <div class="work-sub">
         <div class="work-sub-head">
           <span class="work-sub-num">01</span>
+          <span class="work-sub-title">Client Base Across Industries</span>
+        </div>
+        <p class="case-desc" style="margin-top:14px; max-width:68ch;">Six years in market means Spectrum is the latest chapter, not the whole story. Twelve concurrent client accounts managed through StakeVille alone, spanning the industries below — names redacted under agency confidentiality, NDA available on request.</p>
+
+        <div class="client-category">
+          <div class="client-category-head"><span class="client-category-dot cc-teal"></span>Health, Wellness &amp; Fitness</div>
+          <div class="client-grid">
+            <div class="client-chip cc-teal"><div class="client-redacted">D•••••a</div><div class="client-niche">Yoga</div></div>
+            <div class="client-chip cc-teal"><div class="client-redacted">S•••••s</div><div class="client-niche">Health Insurance — US</div></div>
+            <div class="client-chip cc-teal"><div class="client-redacted">N•••••h</div><div class="client-niche">Health &amp; Fitness Coaching — US</div></div>
+            <div class="client-chip cc-teal"><div class="client-redacted">I•••••s</div><div class="client-niche">Nutrition Coaching</div></div>
+          </div>
+        </div>
+
+        <div class="client-category">
+          <div class="client-category-head"><span class="client-category-dot cc-coral"></span>E-Commerce &amp; Retail</div>
+          <div class="client-grid">
+            <div class="client-chip cc-coral"><div class="client-redacted">M•••••r</div><div class="client-niche">E-Commerce — home care</div></div>
+            <div class="client-chip cc-coral"><div class="client-redacted">E•••••g</div><div class="client-niche">E-Commerce / Trading</div></div>
+            <div class="client-chip cc-coral"><div class="client-redacted">T•••••K</div><div class="client-niche">Kids &amp; Apparel — US</div></div>
+            <div class="client-chip cc-coral"><div class="client-redacted">C•••••y</div><div class="client-niche">Automobile Marketplace — Saudi Arabia</div></div>
+          </div>
+        </div>
+
+        <div class="client-category">
+          <div class="client-category-head"><span class="client-category-dot cc-violet"></span>Services &amp; Local Business</div>
+          <div class="client-grid">
+            <div class="client-chip cc-violet"><div class="client-redacted">A•••••h</div><div class="client-niche">Insurance — Canada</div></div>
+            <div class="client-chip cc-violet"><div class="client-redacted">G•••••h</div><div class="client-niche">Restaurant (Japanese) — UK</div></div>
+            <div class="client-chip cc-violet"><div class="client-redacted">V•••••a</div><div class="client-niche">Marketing — Canadian cleaning industry</div></div>
+            <div class="client-chip cc-violet"><div class="client-redacted">HR Co.</div><div class="client-niche">Acquisition &amp; Lead Generation</div></div>
+          </div>
+        </div>
+
+        <div class="client-footnote">Detailed case studies are being added as each engagement clears review.</div>
+      </div>
+
+      <div class="work-sub">
+        <div class="work-sub-head">
+          <span class="work-sub-num">02</span>
           <span class="work-sub-title">Organic Growth &amp; Content Strategy</span>
         </div>
         <div class="cases single">
@@ -472,7 +526,7 @@
 
       <div class="work-sub">
         <div class="work-sub-head">
-          <span class="work-sub-num">02</span>
+          <span class="work-sub-num">03</span>
           <span class="work-sub-title">Paid Media &amp; Performance Campaigns</span>
         </div>
         <div class="cases">
@@ -499,7 +553,7 @@
 
       <div class="work-sub">
         <div class="work-sub-head">
-          <span class="work-sub-num">03</span>
+          <span class="work-sub-num">04</span>
           <span class="work-sub-title">Creative &amp; Video Production</span>
         </div>
         <div class="cases single">
@@ -513,28 +567,6 @@
         </div>
       </div>
 
-      <div class="work-sub">
-        <div class="work-sub-head">
-          <span class="work-sub-num">04</span>
-          <span class="work-sub-title">Client &amp; Campaign Management — Multi-Industry</span>
-        </div>
-        <p class="case-desc" style="margin-top:14px; max-width:68ch;">Twelve concurrent client accounts managed through StakeVille, spanning twelve different industries. Names are redacted under agency confidentiality; detailed case studies are being added as each one clears review.</p>
-        <div class="client-grid">
-          <div class="client-chip"><div class="client-redacted">A•••••h</div><div class="client-niche">Insurance — Canada</div></div>
-          <div class="client-chip"><div class="client-redacted">D•••••a</div><div class="client-niche">Yoga</div></div>
-          <div class="client-chip"><div class="client-redacted">M•••••r</div><div class="client-niche">E-Commerce — home care</div></div>
-          <div class="client-chip"><div class="client-redacted">S•••••s</div><div class="client-niche">Health Insurance — US</div></div>
-          <div class="client-chip"><div class="client-redacted">G•••••h</div><div class="client-niche">Restaurant (Japanese) — UK</div></div>
-          <div class="client-chip"><div class="client-redacted">E•••••g</div><div class="client-niche">E-Commerce / Trading</div></div>
-          <div class="client-chip"><div class="client-redacted">V•••••a</div><div class="client-niche">Marketing — Canadian cleaning industry</div></div>
-          <div class="client-chip"><div class="client-redacted">T•••••K</div><div class="client-niche">Kids &amp; Apparel — US</div></div>
-          <div class="client-chip"><div class="client-redacted">N•••••h</div><div class="client-niche">Health &amp; Fitness Coaching — US</div></div>
-          <div class="client-chip"><div class="client-redacted">I•••••s</div><div class="client-niche">Nutrition Coaching</div></div>
-          <div class="client-chip"><div class="client-redacted">C•••••y</div><div class="client-niche">Automobile Marketplace — Saudi Arabia</div></div>
-          <div class="client-chip"><div class="client-redacted">HR Co.</div><div class="client-niche">Acquisition &amp; Lead Generation</div></div>
-        </div>
-        <div class="client-footnote">NDA available on request for engagements requiring verification.</div>
-      </div>
     </div>
   </section>
 
