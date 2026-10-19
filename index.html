@@ -1,4 +1,11 @@
-<title>Saifullah Saleh</title>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Saifullah Saleh, Social Media Manager and Digital Marketing Strategist. Portfolio of organic growth, paid media and content work.">
+<meta name="theme-color" content="#F5F4EF">
+<title>Saifullah Saleh | Digital Marketing &amp; Social Media Manager</title>
 <style>
   /* Layout concept: a broadcast signal — concentric reach-arcs (from the
      existing LinkedIn brand asset) mark section transitions; work is grouped
@@ -75,7 +82,7 @@
   .nav-links{ display:flex; align-items:center; gap:18px; font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em; }
   .nav-links a{ text-decoration:none; color:var(--muted); white-space:nowrap; }
   .nav-links a:hover{ color:var(--teal); }
-  .nav-scroll{ overflow-x:auto; }
+  .nav-scroll{ overflow-x:auto; margin-left:auto; }
   .theme-btn{
     font-family:var(--font-mono); font-size:12px; letter-spacing:0.04em;
     padding:5px 10px; border-radius:20px; border:1px solid var(--line-strong);
@@ -85,7 +92,11 @@
   @media (max-width:560px){
     .nav-row{ flex-wrap:wrap; row-gap:8px; }
     .nav-links{ width:100%; gap:16px; padding-bottom:2px; }
-    .nav-links .theme-btn{ margin-left:auto; }
+    .nav-name{ order:1; }
+    .theme-btn{ order:2; margin-left:auto; }
+    .nav-links{ order:3; }
+    .nav-links a{ padding-block:9px; }
+    .copy-btn{ min-height:36px; padding-inline:14px; }
   }
   .nav-links a{ padding-block:4px; border-bottom:2px solid transparent; }
   .nav-links a.active{ color:var(--teal); border-bottom-color:var(--teal); }
@@ -381,6 +392,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+</head>
+<body>
 <header class="nav">
   <div class="wrap nav-row">
     <div class="nav-name">SAIFULLAH SALEH</div>
@@ -390,8 +403,8 @@
       <a href="#experience">Experience</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-      <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()" type="button">Dark mode</button>
     </nav>
+    <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()" type="button">Dark mode</button>
   </div>
 </header>
 
@@ -852,3 +865,25 @@
     applyThemeLabel();
   })();
 </script>
+
+<script>
+(function(){
+  try{
+    var links=[].slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+    var map={}; links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+    var secs=Object.keys(map).map(function(id){return document.getElementById(id);}).filter(Boolean);
+    if(!('IntersectionObserver' in window)) return;
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.classList.remove('active');});
+          map[e.target.id].classList.add('active');
+        }
+      });
+    },{rootMargin:'-35% 0px -60% 0px'});
+    secs.forEach(function(el){io.observe(el);});
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
