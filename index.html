@@ -92,7 +92,7 @@
   .btn-solid:hover{ border-color:var(--teal); }
 
   .stat-row{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
     margin-top:48px; background:var(--line); border:1px solid var(--line); border-radius:4px; overflow:hidden;
   }
   .stat{ background:var(--bg); padding:18px 16px; min-width:0; }
@@ -101,7 +101,7 @@
     display:block; margin-top:4px; font-family:var(--font-mono); font-size:12.5px;
     letter-spacing:0.08em; text-transform:uppercase; color:var(--muted-2);
   }
-  @media (max-width:560px){ .stat-row{ grid-template-columns:1fr; } }
+  @media (max-width:820px){ .stat-row{ grid-template-columns:repeat(2,1fr); } }
 
   /* ---------- About ---------- */
   .about-grid{ display:grid; grid-template-columns:140px 1fr; gap:40px; }
@@ -216,6 +216,32 @@
     transition:transform .2s ease;
   }
   .work-gallery button:hover img{ transform:scale(1.06); }
+
+  /* ---------- Collapsible galleries ---------- */
+  details.gal{ margin-top:12px; border:1px solid var(--line); border-radius:6px; background:var(--surface-2); }
+  details.gal > summary{
+    list-style:none; cursor:pointer; display:flex; align-items:center; gap:10px;
+    min-height:48px; padding:10px 16px; font-family:var(--font-mono); font-size:12px;
+    color:var(--ink); text-transform:uppercase; letter-spacing:0.07em;
+  }
+  details.gal > summary::-webkit-details-marker{ display:none; }
+  details.gal > summary::after{
+    content:""; margin-left:auto; width:8px; height:8px; border-right:2px solid var(--teal);
+    border-bottom:2px solid var(--teal); transform:rotate(45deg); transition:transform .2s ease;
+  }
+  details.gal[open] > summary::after{ transform:rotate(-135deg); }
+  details.gal > summary:focus-visible{ outline:2px solid var(--teal); outline-offset:2px; border-radius:6px; }
+  .gal-count{
+    background:var(--teal); color:#fff; border-radius:999px; padding:1px 9px;
+    font-size:11px; letter-spacing:0.02em;
+  }
+  :root[data-theme="dark"] .gal-count{ color:#0E1026; }
+  .gal-body{ padding:2px 16px 16px; }
+  .case-goal{ font-size:15px; color:var(--ink); line-height:1.5; }
+  .case-goal span{
+    display:inline-block; margin-right:8px; font-family:var(--font-mono); font-size:11px;
+    color:var(--coral); text-transform:uppercase; letter-spacing:0.07em;
+  }
   #lightbox{
     display:none; position:fixed; inset:0; z-index:50; background:rgba(5,6,20,0.88);
     align-items:center; justify-content:center; padding:28px; cursor:zoom-out;
@@ -370,15 +396,16 @@
     <div class="wrap hero-inner">
       <div class="eyebrow">DIGITAL MARKETING &amp; SOCIAL MEDIA</div>
       <h1>Saifullah Saleh<br>builds <span class="accent">marketing systems</span><br>that outlast the campaign.</h1>
-      <p class="hero-tag">Social Media Manager and Digital Marketing Strategist based in Islamabad, Pakistan — six years running paid, organic, and content strategy for teams and clients across the USA, UK, Canada, and the Middle East.</p>
+      <p class="hero-tag">Social Media Manager and Digital Marketing Strategist based in Islamabad, Pakistan, six years running paid, organic, and content strategy for teams and clients across the USA, UK, Canada, and the Middle East.</p>
       <div class="hero-cta">
         <a class="btn btn-solid" href="https://www.linkedin.com/in/saifullah-saleh-860001310/">View LinkedIn ↗</a>
         <a class="btn" href="#contact">Get in touch</a>
       </div>
       <div class="stat-row">
         <div class="stat"><span class="mono">6+</span><span class="stat-label">Years in market</span></div>
-        <div class="stat"><span class="mono">15</span><span class="stat-label">Largest team led</span></div>
-        <div class="stat"><span class="mono">12+</span><span class="stat-label">Industries served</span></div>
+        <div class="stat"><span class="mono">+136%</span><span class="stat-label">YouTube watch time, first 28 days</span></div>
+        <div class="stat"><span class="mono">SAR 2.5M</span><span class="stat-label">Lead campaigns, 3 months</span></div>
+        <div class="stat"><span class="mono">$0</span><span class="stat-label">Paid budget, organic program</span></div>
       </div>
     </div>
   </section>
@@ -387,8 +414,8 @@
     <div class="wrap about-grid">
       <div class="eyebrow">ABOUT</div>
       <div class="about-copy">
-        <p>I help businesses turn social media and digital marketing into <strong>measurable outcomes</strong> — audience growth, qualified leads, and revenue — not just content for its own sake. My work spans social strategy, Meta and Google Ads, content planning, and campaign analytics, usually while leading the team that ships it.</p>
-        <p>I've run organic programs on zero marketing budget, paid performance campaigns across international travel and real estate clients, and multi-account teams of up to 15 people spanning the USA, UK, Canada, and the Middle East. Before marketing, I trained at the Pakistan Military Academy — the discipline and structure from that still shape how I run a campaign.</p>
+        <p>I help businesses turn social media and digital marketing into <strong>measurable outcomes</strong>, audience growth, qualified leads, and revenue, not just content for its own sake. My work spans social strategy, Meta and Google Ads, content planning, and campaign analytics, usually while leading the team that ships it.</p>
+        <p>I've run organic programs on zero marketing budget, paid performance campaigns across international travel and real estate clients, and multi-account teams of up to 15 people spanning the USA, UK, Canada, and the Middle East. Before marketing, I trained at the Pakistan Military Academy, the discipline and structure from that still shape how I run a campaign.</p>
       </div>
     </div>
   </section>
@@ -403,21 +430,21 @@
             <div class="astep-n">01</div>
             <div>
               <div class="astep-h">Know the market before touching the message</div>
-              <div class="astep-d">What are the customer's actual pain points, what does the business offer, and why should anyone trust it over the alternative — answered before any creative is built.</div>
+              <div class="astep-d">What are the customer's actual pain points, what does the business offer, and why should anyone trust it over the alternative, answered before any creative is built.</div>
             </div>
           </div>
           <div class="astep">
             <div class="astep-n">02</div>
             <div>
               <div class="astep-h">Build the message around one hook</div>
-              <div class="astep-d">A clear tagline and a single emotional trigger — usually urgency or FOMO — tied directly to the pain point just identified, not a generic brand line.</div>
+              <div class="astep-d">A clear tagline and a single emotional trigger, usually urgency or FOMO, tied directly to the pain point just identified, not a generic brand line.</div>
             </div>
           </div>
           <div class="astep">
             <div class="astep-n">03</div>
             <div>
               <div class="astep-h">Match the content mode to the job it has to do</div>
-              <div class="astep-d">Graphics keep a platform active and feeding the algorithm day to day — they're maintenance, not the growth driver. Video, especially 9:16 vertical, is what actually moves leads and sales.</div>
+              <div class="astep-d">Graphics keep a platform active and feeding the algorithm day to day, they're maintenance, not the growth driver. Video, especially 9:16 vertical, is what actually moves leads and sales.</div>
             </div>
           </div>
         </div>
@@ -435,14 +462,14 @@
           <span class="work-sub-num">01</span>
           <span class="work-sub-title">Client Base Across Industries</span>
         </div>
-        <p class="case-desc" style="margin-top:14px; max-width:68ch;">Six years in market means Spectrum is the latest chapter, not the whole story. Twelve concurrent client accounts managed through StakeVille alone, spanning the industries below — names redacted under agency confidentiality, NDA available on request.</p>
+        <p class="case-desc" style="margin-top:14px; max-width:68ch;">Six years in market means Spectrum is the latest chapter, not the whole story. Twelve concurrent client accounts managed through StakeVille alone, spanning the industries below, names redacted under agency confidentiality, NDA available on request.</p>
 
         <div class="client-category">
           <div class="client-category-head"><span class="client-category-dot cc-teal"></span>Health, Wellness &amp; Fitness</div>
           <div class="client-grid">
             <div class="client-chip cc-teal"><div class="client-redacted">D•••••a</div><div class="client-niche">Yoga</div></div>
-            <div class="client-chip cc-teal"><div class="client-redacted">S•••••s</div><div class="client-niche">Health Insurance — US</div></div>
-            <div class="client-chip cc-teal"><div class="client-redacted">N•••••h</div><div class="client-niche">Health &amp; Fitness Coaching — US</div></div>
+            <div class="client-chip cc-teal"><div class="client-redacted">S•••••s</div><div class="client-niche">Health Insurance, US</div></div>
+            <div class="client-chip cc-teal"><div class="client-redacted">N•••••h</div><div class="client-niche">Health &amp; Fitness Coaching, US</div></div>
             <div class="client-chip cc-teal"><div class="client-redacted">I•••••s</div><div class="client-niche">Nutrition Coaching</div></div>
           </div>
         </div>
@@ -450,19 +477,19 @@
         <div class="client-category">
           <div class="client-category-head"><span class="client-category-dot cc-coral"></span>E-Commerce &amp; Retail</div>
           <div class="client-grid">
-            <div class="client-chip cc-coral"><div class="client-redacted">M•••••r</div><div class="client-niche">E-Commerce — home care</div></div>
+            <div class="client-chip cc-coral"><div class="client-redacted">M•••••r</div><div class="client-niche">E-Commerce, home care</div></div>
             <div class="client-chip cc-coral"><div class="client-redacted">E•••••g</div><div class="client-niche">E-Commerce / Trading</div></div>
-            <div class="client-chip cc-coral"><div class="client-redacted">T•••••K</div><div class="client-niche">Kids &amp; Apparel — US</div></div>
-            <div class="client-chip cc-coral"><div class="client-redacted">C•••••y</div><div class="client-niche">Automobile Marketplace — Saudi Arabia</div></div>
+            <div class="client-chip cc-coral"><div class="client-redacted">T•••••K</div><div class="client-niche">Kids &amp; Apparel, US</div></div>
+            <div class="client-chip cc-coral"><div class="client-redacted">C•••••y</div><div class="client-niche">Automobile Marketplace, Saudi Arabia</div></div>
           </div>
         </div>
 
         <div class="client-category">
           <div class="client-category-head"><span class="client-category-dot cc-violet"></span>Services &amp; Local Business</div>
           <div class="client-grid">
-            <div class="client-chip cc-violet"><div class="client-redacted">A•••••h</div><div class="client-niche">Insurance — Canada</div></div>
-            <div class="client-chip cc-violet"><div class="client-redacted">G•••••h</div><div class="client-niche">Restaurant (Japanese) — UK</div></div>
-            <div class="client-chip cc-violet"><div class="client-redacted">V•••••a</div><div class="client-niche">Marketing — Canadian cleaning industry</div></div>
+            <div class="client-chip cc-violet"><div class="client-redacted">A•••••h</div><div class="client-niche">Insurance, Canada</div></div>
+            <div class="client-chip cc-violet"><div class="client-redacted">G•••••h</div><div class="client-niche">Restaurant (Japanese), UK</div></div>
+            <div class="client-chip cc-violet"><div class="client-redacted">V•••••a</div><div class="client-niche">Marketing, Canadian cleaning industry</div></div>
             <div class="client-chip cc-violet"><div class="client-redacted">HR Co.</div><div class="client-niche">Acquisition &amp; Lead Generation</div></div>
           </div>
         </div>
@@ -479,11 +506,11 @@
           <div class="case">
             <div class="case-result">$0 paid budget</div>
             <div class="case-what">Video-first organic program across six platforms</div>
-            <div class="case-org">Canadian-based CPA firm — current engagement, name withheld</div>
-            <p class="case-desc">Designed and run the full content pipeline — topics, filming cadence, editing, graphics, and scheduling — cascading one weekly long-form video into shorts and posts across YouTube, Instagram, TikTok, Facebook, X, and LinkedIn with no paid spend.</p>
+            <div class="case-org">Canadian-based CPA firm, current engagement, name withheld</div>
+            <p class="case-desc">Designed and run the full content pipeline: topics, filming cadence, editing, graphics, and scheduling, cascading one weekly long-form video into shorts and posts across YouTube, Instagram, TikTok, Facebook, X, and LinkedIn with no paid spend.</p>
 
             <div class="yt-stats">
-              <div class="yt-stats-label">YouTube — first 28 days vs. the month prior</div>
+              <div class="yt-stats-label">YouTube: first 28 days vs. the month prior</div>
               <div class="yt-stats-grid">
                 <div>
                   <div class="yt-stat-figure">+136%</div>
@@ -501,18 +528,16 @@
                   <div class="yt-stat-name">Views</div>
                 </div>
               </div>
-              <p class="yt-stats-note">Sep 3–30 (first full cycle after taking over organic content) compared to Aug 1–31 (prior baseline). Channel was early-stage going in, so absolute numbers are shown alongside the percentages.</p>
-              <div class="yt-shots">
+              <p class="yt-stats-note">Sep 3 to 30 (first full cycle after taking over organic content) compared to Aug 1 to 31 (prior baseline). Channel was early-stage going in, so absolute numbers are shown alongside the percentages.</p>
+              <details class="gal"><summary><span class="gal-title">Analytics screenshots</span><span class="gal-count">4</span></summary><div class="gal-body"><div class="yt-shots">
                 <button onclick="openLightbox('assets/yt-aug-overview.png')"><img src="assets/yt-aug-overview.png" loading="lazy" alt="YouTube overview, August baseline"></button>
                 <button onclick="openLightbox('assets/yt-sep-overview.png')"><img src="assets/yt-sep-overview.png" loading="lazy" alt="YouTube overview, first 28 days"></button>
                 <button onclick="openLightbox('assets/yt-sep-videos.png')"><img src="assets/yt-sep-videos.png" loading="lazy" alt="YouTube long-form video analytics, first 28 days"></button>
                 <button onclick="openLightbox('assets/yt-sep-shorts.png')"><img src="assets/yt-sep-shorts.png" loading="lazy" alt="YouTube Shorts analytics, first 28 days"></button>
-              </div>
+              </div></div></details>
             </div>
 
-            <div class="gallery-label">Educational carousels &amp; graphics (15)</div>
-
-            <div class="gallery-sublabel">Light theme</div>
+            <details class="gal" open><summary><span class="gal-title">Educational carousels &amp; graphics</span><span class="gal-count">15</span></summary><div class="gal-body"><div class="gallery-sublabel">Light theme</div>
             <div class="work-gallery">
               <button onclick="openLightbox('assets/dd664893.jpg')"><img src="assets/dd664893.jpg" loading="lazy" alt="Organic content sample"></button>
               <button onclick="openLightbox('assets/08ae36eb.jpg')"><img src="assets/08ae36eb.jpg" loading="lazy" alt="Organic content sample"></button>
@@ -537,24 +562,23 @@
               <button onclick="openLightbox('assets/4b7692d2.jpg')"><img src="assets/4b7692d2.jpg" loading="lazy" alt="Organic content sample"></button>
               <button onclick="openLightbox('assets/b7d57776.jpg')"><img src="assets/b7d57776.jpg" loading="lazy" alt="Organic content sample"></button>
               <button onclick="openLightbox('assets/6520bdcc.jpg')"><img src="assets/6520bdcc.jpg" loading="lazy" alt="Organic content sample"></button>
-            </div>
+            </div></div></details>
 
-            <div class="gallery-label">Short-form video thumbnails (6)</div>
-            <div class="work-gallery">
+            <details class="gal"><summary><span class="gal-title">Short-form video thumbnails</span><span class="gal-count">6</span></summary><div class="gal-body"><div class="work-gallery">
               <button onclick="openLightbox('assets/f0a2133b.jpg')"><img src="assets/f0a2133b.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
               <button onclick="openLightbox('assets/fe6daeb9.jpg')"><img src="assets/fe6daeb9.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
               <button onclick="openLightbox('assets/dc1f4cb6.jpg')"><img src="assets/dc1f4cb6.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
               <button onclick="openLightbox('assets/593c72bd.jpg')"><img src="assets/593c72bd.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
               <button onclick="openLightbox('assets/b2249e65.jpg')"><img src="assets/b2249e65.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
               <button onclick="openLightbox('assets/42bb4343.jpg')"><img src="assets/42bb4343.jpg" loading="lazy" alt="Shorts thumbnail sample"></button>
-            </div>
+            </div></div></details>
 
-            <div class="gallery-label">Long-form video thumbnails (3)</div>
-            <div class="work-gallery">
+            <details class="gal"><summary><span class="gal-title">Long-form video thumbnails</span><span class="gal-count">3</span></summary><div class="gal-body"><div class="work-gallery">
               <button onclick="openLightbox('assets/a58a1a85.jpg')"><img src="assets/a58a1a85.jpg" loading="lazy" alt="Long-form video thumbnail sample"></button>
               <button onclick="openLightbox('assets/1ab71f2a.jpg')"><img src="assets/1ab71f2a.jpg" loading="lazy" alt="Long-form video thumbnail sample"></button>
               <button onclick="openLightbox('assets/5fd84b51.jpg')"><img src="assets/5fd84b51.jpg" loading="lazy" alt="Long-form video thumbnail sample"></button>
-            </div>
+            </div></div></details>
+
             <div class="case-note">Client name and logos withheld per current-engagement confidentiality; faces of other on-camera team members blurred.</div>
           </div>
         </div>
@@ -570,18 +594,21 @@
             <div class="case-result">SAR 2.5M / 3 mo</div>
             <div class="case-what">Two customized video-mode lead campaigns</div>
             <div class="case-org">International travel &amp; accommodation company</div>
+            <div class="case-goal"><span>Goal</span>Generate high quality leads for an international travel business.</div>
             <p class="case-desc">Designed and ran two tailored video-based lead-generation campaigns, generating consistently high-quality leads; best single week drove SAR 300,000 in client revenue.</p>
           </div>
           <div class="case">
             <div class="case-result">PKR 400M / 6 mo</div>
             <div class="case-what">Video-based campaigns across multiple projects</div>
-            <div class="case-org">Real estate company — multiple projects</div>
+            <div class="case-org">Real estate company, multiple projects</div>
+            <div class="case-goal"><span>Goal</span>Support property sales across several concurrent projects.</div>
             <p class="case-desc">Maintained consistent, quality organic posting and ran video-led campaigns across several concurrent real estate projects, supporting PKR 400 million in property sales over six months.</p>
           </div>
           <div class="case">
             <div class="case-result">Up to 15 people</div>
             <div class="case-what">Meta Ads &amp; multi-account campaign management</div>
-            <div class="case-org">StakeVille — international client accounts</div>
+            <div class="case-org">StakeVille, international client accounts</div>
+            <div class="case-goal"><span>Goal</span>Deliver paid media results for international client accounts.</div>
             <p class="case-desc">Lead paid media and campaign execution across a cross-functional team serving clients in the USA, UK, and Canada, from audience segmentation through reporting.</p>
           </div>
         </div>
@@ -597,6 +624,7 @@
             <div class="case-result">9:16 vertical</div>
             <div class="case-what">Graphics as algorithm maintenance, video as the growth lever</div>
             <div class="case-org">International travel &amp; accommodation company</div>
+            <div class="case-goal"><span>Goal</span>Keep channels active between campaigns while video drives conversions.</div>
             <p class="case-desc">Directed ad creative briefs and platform graphics that kept channels active between campaigns, while vertical video carried the actual lead and conversion volume.</p>
             <div class="case-note">Sample graphics &amp; creative briefs available on request</div>
           </div>
@@ -611,7 +639,7 @@
       <div class="eyebrow">EXPERIENCE</div>
       <div class="timeline">
         <div class="role">
-          <div class="role-when">Apr 2022 — <span class="current">Present</span></div>
+          <div class="role-when">Apr 2022 to <span class="current">Present</span></div>
           <div>
             <div class="role-title">Manager, Digital Marketing &amp; Client Success</div>
             <div class="role-org">STAKEVILLE</div>
@@ -619,23 +647,23 @@
           </div>
         </div>
         <div class="role">
-          <div class="role-when">Aug 2025 — Jul 2026</div>
+          <div class="role-when">Aug 2025 to Jul 2026</div>
           <div>
-            <div class="role-title">Digital Marketing Team Lead — Growth &amp; Lead Generation</div>
+            <div class="role-title">Digital Marketing Team Lead, Growth &amp; Lead Generation</div>
             <div class="role-org">FUNADIQ / UMRAH COMPANIONS</div>
             <p class="role-desc">Directed audience-growth and lead-generation campaigns across the USA, Canada, UK, and Middle East, using audience segmentation to sharpen messaging, targeting, and creative performance.</p>
           </div>
         </div>
         <div class="role">
-          <div class="role-when">Apr 2024 — Aug 2025</div>
+          <div class="role-when">Apr 2024 to Aug 2025</div>
           <div>
-            <div class="role-title">Digital Marketing Team Lead — Performance Campaigns</div>
+            <div class="role-title">Digital Marketing Team Lead, Performance Campaigns</div>
             <div class="role-org">DIGI MARKETING INC</div>
             <p class="role-desc">Managed end-to-end Meta and Google Ads campaigns for international B2B/B2C accounts; A/B testing and audience segmentation work contributed to an approximate 30% reduction in CPA while holding lead quality. Directed a cross-functional team of 10+ designers, copywriters, and media buyers.</p>
           </div>
         </div>
         <div class="role">
-          <div class="role-when">Apr 2021 — Mar 2024</div>
+          <div class="role-when">Apr 2021 to Mar 2024</div>
           <div>
             <div class="role-title">Manager, Digital Marketing</div>
             <div class="role-org">AWAZ MARKETING</div>
@@ -643,7 +671,7 @@
           </div>
         </div>
         <div class="role">
-          <div class="role-when">Jun 2020 — Apr 2021</div>
+          <div class="role-when">Jun 2020 to Apr 2021</div>
           <div>
             <div class="role-title">Marketing Executive | Content &amp; Copywriter</div>
             <div class="role-org">NXG IMPACTS</div>
@@ -708,24 +736,24 @@
       <div class="eyebrow">EDUCATION</div>
       <div style="margin-top:20px;">
         <div class="edu-row">
-          <div class="edu-when">2021 — 2023</div>
+          <div class="edu-when">2021 to 2023</div>
           <div>
             <div class="edu-deg">Master's, International Relations</div>
             <div class="edu-org">University of Sargodha</div>
           </div>
         </div>
         <div class="edu-row">
-          <div class="edu-when">2017 — 2019</div>
+          <div class="edu-when">2017 to 2019</div>
           <div>
             <div class="edu-deg">Bachelor's, International Relations &amp; Political Science</div>
             <div class="edu-org">University of Sargodha</div>
           </div>
         </div>
         <div class="edu-row">
-          <div class="edu-when">Apr 2015 — Apr 2017</div>
+          <div class="edu-when">Apr 2015 to Apr 2017</div>
           <div>
             <div class="edu-deg">Bachelor of Military Arts &amp; Sciences</div>
-            <div class="edu-org">Pakistan Military Academy, Kakul — Abbottabad</div>
+            <div class="edu-org">Pakistan Military Academy, Kakul, Abbottabad</div>
           </div>
         </div>
       </div>
@@ -735,7 +763,7 @@
   <section id="contact" class="contact">
     <div class="wrap">
       <div class="eyebrow">CONTACT</div>
-      <h2 style="margin-top:14px;">Open to Social Media Manager and Digital Marketing roles — remote, international teams preferred.</h2>
+      <h2 style="margin-top:14px;">Open to Social Media Manager and Digital Marketing roles, remote, international teams preferred.</h2>
       <p class="contact-copy">The fastest way to reach me is email or LinkedIn. Happy to walk through any of the results above in more detail.</p>
       <div class="contact-lines">
         <div class="contact-line"><span class="k">Email</span><span class="v" id="email-val">saif30260@gmail.com</span><button class="copy-btn" data-copy="saif30260@gmail.com" onclick="copyVal(this)">Copy</button></div>
@@ -748,7 +776,7 @@
 
 <footer>
   <div class="wrap foot-row">
-    <span>SAIFULLAH SALEH — ISLAMABAD, PAKISTAN</span>
+    <span>SAIFULLAH SALEH, ISLAMABAD, PAKISTAN</span>
     <span>UPDATED OCT 2026</span>
   </div>
 </footer>
