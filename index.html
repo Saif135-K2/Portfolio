@@ -45,6 +45,21 @@
   section{ padding-block:64px; border-bottom:1px solid var(--line); }
   section:last-of-type{ border-bottom:none; }
 
+
+  /* ---------- Section headings ---------- */
+  section{ scroll-margin-top:72px; }
+  .sec-title{
+    font-size:clamp(30px,5vw,42px); font-weight:700; line-height:1.1; letter-spacing:-0.02em;
+    padding-top:16px; position:relative;
+  }
+  .sec-title::before{
+    content:""; position:absolute; top:0; left:0; width:44px; height:4px; border-radius:2px; background:var(--teal);
+  }
+  .about-grid > .sec-title, .approach-grid > .sec-title{ align-self:start; position:sticky; top:96px; }
+  .about-grid > .sec-title::before, .approach-grid > .sec-title::before{ position:absolute; }
+  .sec-lead{ margin-top:12px; font-size:19px; color:var(--muted); max-width:56ch; }
+  .contact-lead{ margin-top:14px; font-size:clamp(19px,2.6vw,24px); font-weight:500; color:var(--muted); max-width:38ch; line-height:1.4; }
+
   /* ---------- Nav ---------- */
   header.nav{
     position:sticky; top:env(safe-area-inset-top,0px); z-index:20;
@@ -68,8 +83,12 @@
   }
   .theme-btn:hover{ border-color:var(--teal); color:var(--teal); }
   @media (max-width:560px){
-    .nav-links a{ display:none; }
+    .nav-row{ flex-wrap:wrap; row-gap:8px; }
+    .nav-links{ width:100%; gap:16px; padding-bottom:2px; }
+    .nav-links .theme-btn{ margin-left:auto; }
   }
+  .nav-links a{ padding-block:4px; border-bottom:2px solid transparent; }
+  .nav-links a.active{ color:var(--teal); border-bottom-color:var(--teal); }
 
   /* ---------- Hero ---------- */
   .hero{ position:relative; padding-block:80px 56px; overflow:hidden; border-bottom:1px solid var(--line); }
@@ -104,14 +123,14 @@
   @media (max-width:820px){ .stat-row{ grid-template-columns:repeat(2,1fr); } }
 
   /* ---------- About ---------- */
-  .about-grid{ display:grid; grid-template-columns:140px 1fr; gap:40px; }
+  .about-grid{ display:grid; grid-template-columns:200px 1fr; gap:40px; }
   .about-grid p + p{ margin-top:16px; }
   .about-copy{ font-size:17px; max-width:66ch; }
   .about-copy strong{ color:var(--ink); font-weight:600; }
   @media (max-width:640px){ .about-grid{ grid-template-columns:1fr; gap:16px; } }
 
   /* ---------- Approach ---------- */
-  .approach-grid{ display:grid; grid-template-columns:140px 1fr; gap:40px; margin-top:0; }
+  .approach-grid{ display:grid; grid-template-columns:200px 1fr; gap:40px; margin-top:0; }
   .approach-steps{ margin-top:0; display:flex; flex-direction:column; }
   .astep{ display:grid; grid-template-columns:34px 1fr; gap:16px; padding-block:18px; border-top:1px solid var(--line); }
   .astep:first-child{ border-top:1px solid var(--line-strong); }
@@ -137,11 +156,11 @@
   }
 
   /* ---------- Work / capability sections ---------- */
-  .work-sub{ margin-top:52px; }
+  .work-sub{ margin-top:68px; }
   .work-sub:first-child{ margin-top:36px; }
-  .work-sub-head{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
-  .work-sub-num{ font-family:var(--font-mono); font-size:13px; color:var(--coral); letter-spacing:0.05em; }
-  .work-sub-title{ font-family:var(--font-display); font-weight:600; font-size:18.5px; }
+  .work-sub-head{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; border-top:1px solid var(--line-strong); padding-top:22px; }
+  .work-sub-num{ font-family:var(--font-mono); font-size:14px; font-weight:600; color:var(--coral); letter-spacing:0.05em; }
+  .work-sub-title{ font-family:var(--font-display); font-weight:700; font-size:clamp(21px,3vw,25px); letter-spacing:-0.01em; }
   .cases{ margin-top:18px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   .cases.single{ grid-template-columns:1fr; }
   .case{
@@ -299,7 +318,6 @@
 
   /* ---------- Contact / footer ---------- */
   .contact{ text-align:left; }
-  .contact h2{ font-size:clamp(26px,4.4vw,38px); max-width:20ch; }
   .contact-copy{ margin-top:14px; color:var(--muted); max-width:52ch; font-size:16px; }
   .contact-lines{ margin-top:30px; display:flex; flex-direction:column; gap:10px; }
   .contact-line{
@@ -335,7 +353,6 @@
     .role-title{ font-size:19px; }
     .role-org{ font-size:14.5px; }
     .role-desc{ font-size:16.5px; line-height:1.6; }
-    .work-sub-title{ font-size:19px; }
     .case-result{ font-size:27px; }
     .case-what{ font-size:17px; }
     .case-org{ font-size:13px; }
@@ -412,7 +429,7 @@
 
   <section id="about">
     <div class="wrap about-grid">
-      <div class="eyebrow">ABOUT</div>
+      <h2 class="sec-title">About</h2>
       <div class="about-copy">
         <p>I help businesses turn social media and digital marketing into <strong>measurable outcomes</strong>, audience growth, qualified leads, and revenue, not just content for its own sake. My work spans social strategy, Meta and Google Ads, content planning, and campaign analytics, usually while leading the team that ships it.</p>
         <p>I've run organic programs on zero marketing budget, paid performance campaigns across international travel and real estate clients, and multi-account teams of up to 15 people spanning the USA, UK, Canada, and the Middle East. Before marketing, I trained at the Pakistan Military Academy, the discipline and structure from that still shape how I run a campaign.</p>
@@ -422,7 +439,7 @@
 
   <section id="approach">
     <div class="wrap approach-grid">
-      <div class="eyebrow">APPROACH</div>
+      <h2 class="sec-title">Approach</h2>
       <div>
         <p class="about-copy" style="margin-bottom:8px;">Every campaign starts the same way, regardless of industry:</p>
         <div class="approach-steps">
@@ -454,8 +471,8 @@
 
   <section id="work">
     <div class="wrap">
-      <div class="eyebrow">SELECTED WORK</div>
-      <h2 style="margin-top:14px; font-size:clamp(24px,4vw,32px);">Organized by what I do, not who I did it for.</h2>
+      <h2 class="sec-title">Selected Work</h2>
+      <p class="sec-lead">Organized by what I do, not who I did it for.</p>
 
       <div class="work-sub">
         <div class="work-sub-head">
@@ -636,7 +653,7 @@
 
   <section id="experience">
     <div class="wrap">
-      <div class="eyebrow">EXPERIENCE</div>
+      <h2 class="sec-title">Experience</h2>
       <div class="timeline">
         <div class="role">
           <div class="role-when">Apr 2022 to <span class="current">Present</span></div>
@@ -684,7 +701,7 @@
 
   <section id="skills">
     <div class="wrap">
-      <div class="eyebrow">SKILLS</div>
+      <h2 class="sec-title">Skills</h2>
       <div class="skill-groups">
         <div class="skill-group">
           <h3>Strategy &amp; Growth</h3>
@@ -733,7 +750,7 @@
 
   <section id="education">
     <div class="wrap">
-      <div class="eyebrow">EDUCATION</div>
+      <h2 class="sec-title">Education</h2>
       <div style="margin-top:20px;">
         <div class="edu-row">
           <div class="edu-when">2021 to 2023</div>
@@ -762,8 +779,8 @@
 
   <section id="contact" class="contact">
     <div class="wrap">
-      <div class="eyebrow">CONTACT</div>
-      <h2 style="margin-top:14px;">Open to Social Media Manager and Digital Marketing roles, remote, international teams preferred.</h2>
+      <h2 class="sec-title">Contact</h2>
+      <h3 class="contact-lead">Open to Social Media Manager and Digital Marketing roles, remote, international teams preferred.</h3>
       <p class="contact-copy">The fastest way to reach me is email or LinkedIn. Happy to walk through any of the results above in more detail.</p>
       <div class="contact-lines">
         <div class="contact-line"><span class="k">Email</span><span class="v" id="email-val">saif30260@gmail.com</span><button class="copy-btn" data-copy="saif30260@gmail.com" onclick="copyVal(this)">Copy</button></div>
